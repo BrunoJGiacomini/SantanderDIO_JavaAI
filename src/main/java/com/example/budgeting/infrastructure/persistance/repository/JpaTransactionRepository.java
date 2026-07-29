@@ -7,6 +7,7 @@ import com.example.budgeting.domain.Transaction;
 import com.example.budgeting.domain.TransactionRepository;
 import com.example.budgeting.infrastructure.persistance.entity.TransactionEntity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -29,5 +30,15 @@ public class JpaTransactionRepository implements TransactionRepository {
                 .stream()
                 .map(TransactionEntity::toDomain)
                 .toList();
+    }
+
+    @Override
+    public List<Transaction> findAll() {
+        List<Transaction> transactions = new ArrayList<>();
+
+        transactionEntityRepository.findAll()
+                .forEach(entity -> transactions.add(entity.toDomain()));
+
+        return transactions;
     }
 }
