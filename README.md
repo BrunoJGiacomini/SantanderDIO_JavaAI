@@ -228,15 +228,6 @@ Dessa forma, uma transação inválida é rejeitada antes de chegar ao Repositor
 
 Foram adicionados testes unitários para garantir o comportamento das validações.
 
-Os principais cenários testados são:
-
-| Cenário           | Resultado esperado     |
-| Valor igual a `0` |  Exceção              |
-| Valor negativo    |  Exceção              |
-| Descrição vazia   |  Exceção              |
-| Categoria `null`  |  Exceção              |
-| Dados válidos     |  Transação persistida |
-
 Também foi utilizado Mockito para verificar que o Repository **não é chamado quando os dados são inválidos**.
 
 Exemplo:
